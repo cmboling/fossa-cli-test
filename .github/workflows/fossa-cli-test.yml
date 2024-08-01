@@ -29,5 +29,5 @@ jobs:
       run: |
         file ./fossa
         ./fossa --version
-        ./fossa analyze | grep label
-        ./fossa analyze | grep url
+        ./fossa analyze --help | grep label
+        ./fossa analyze --help | grep url
