@@ -1,0 +1,29 @@
+name: Run FOSSA CLI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-fossa:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download FOSSA CLI tarball
+      run: wget https://github.com/fossas/fossa-cli/releases/download/v3.9.28/fossa_3.9.28_linux_amd64.tar.gz
+
+    - name: Extract FOSSA CLI
+      run: tar -xzvf fossa_3.9.28_linux_amd64.tar.gz
+
+    - name: Make FOSSA executable
+      run: chmod +x fossa
+
+    - name: Run FOSSA version
+      run: ./fossa version
