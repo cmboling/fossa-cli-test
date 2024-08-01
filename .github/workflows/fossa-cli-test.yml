@@ -26,4 +26,8 @@ jobs:
       run: chmod +x fossa
 
     - name: Run FOSSA version
-      run: ./fossa version
+      run: |
+        file ./fossa
+        ./fossa --version
+        ./fossa analyze | grep label
+        ./fossa analyze | grep url
